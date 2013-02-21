@@ -6,18 +6,18 @@ package interfaces;
 
 import entities.Staedte;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
  * @author mariusbrederlow
+ * Ortsbestimmung anhand der angegebenen WLAN Stationene
  */
 public interface ILocationService {
+    //Liefert alle Nachbarknoten der id
     public List<Staedte> getNextKnoten(int id);
+    //Liefert alle Nachbarknoten der Kombination id, id2
     public List<Staedte> getNextKnoten(int id, int id2);
-    public Set nextKnotenSet(int id);
-    public List<Integer> getSecKnoten(int id);
-    public List<Staedte> getTrdKnoten(int id, int id2);
+    //Liefert Stadt mit der eindeutigen Kombination von id, id2 und id3
     public Staedte getStadt(int k1, int k2, int k3);
     
 }

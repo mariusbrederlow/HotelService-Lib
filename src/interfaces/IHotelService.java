@@ -13,8 +13,8 @@ import java.util.List;
  * @author mariusbrederlow
  */
 public interface IHotelService {
-    public void createHotel(Object hotel);
-    public List<? extends Object> getallHotels();
-    public List<Hotels> getMatchingHotels(Staedte stadt, int pool, int sterne);
-    public List<Hotels> getHotelFromStadt(Staedte stadt);
+    //Finde Hotels entsprechend der Kriterien
+    public List<Hotels> suchePassendeHotels(Staedte stadt, int pool, int sterne);
+    //Finde alle Hotels in einer Stadt
+    public List<Hotels> sucheHotelsInStadt(Staedte stadt);
 }
