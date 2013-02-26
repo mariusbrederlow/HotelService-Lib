@@ -14,7 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -22,7 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "Hotels", catalog = "Hotelsuche", schema = "")
-@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "Hotel")
 @NamedQueries({
     @NamedQuery(name = "Hotels.findHotelByStadt", query = "SELECT h FROM Hotels h WHERE h.staedteStadtID = :stadtid"),
     @NamedQuery(name = "Hotels.findMatchingHotelByStadt", query = "SELECT h FROM Hotels h WHERE h.staedteStadtID = :stadtid and h.sterne = :sterne and h.pool = :pool"),
@@ -36,17 +40,21 @@ public class Hotels implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "Hotel_ID")
-    private Integer hotelID;
+    private Integer hotelID;      
     @Column(name = "Hotel_Name")
     private String hotelName;
     @Column(name = "Pool")
     private Short pool;
     @Column(name = "Sterne")
     private Integer sterne;
+    @XmlTransient
     @JoinColumn(name = "Staedte_Stadt_ID", referencedColumnName = "Stadt_ID")
     @ManyToOne
     private Staedte staedteStadtID;
 
+
+
+    
     public Hotels() {
     }
 
